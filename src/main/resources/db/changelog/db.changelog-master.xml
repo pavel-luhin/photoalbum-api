@@ -1,0 +1,38 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+   http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd
+http://www.liquibase.org/xml/ns/dbchangelog-ext ">
+
+  <changeSet id="v1.0.0" author="p.luhin">
+    <comment>Initial db creation</comment>
+    <createTable tableName="albums">
+      <column name="id" type="bigint" autoIncrement="true">
+        <constraints primaryKey="true" unique="true"/>
+      </column>
+      <column name="name" type="varchar(50)">
+        <constraints unique="true"/>
+      </column>
+    </createTable>
+
+    <createTable tableName="photos">
+      <column name="id" type="bigint" autoIncrement="true">
+        <constraints primaryKey="true" unique="true"/>
+      </column>
+      <column name="file_name" type="varchar(50)">
+        <constraints unique="true"/>
+      </column>
+      <column name="url" type="varchar(200)">
+        <constraints unique="true"/>
+      </column>
+      <column name="album_id" type="bigint">
+        <constraints foreignKeyName="fk_photo_album_id" referencedTableName="albums" referencedColumnNames="id"/>
+      </column>
+    </createTable>
+  </changeSet>
+
+</databaseChangeLog>

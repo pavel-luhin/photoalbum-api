@@ -46,7 +46,7 @@ class SimplePhotoService(
         }
         .flatMapIterable { it }
         .map {
-          val photo = photoRepository.findByName(it.key)
+          val photo = photoRepository.findByFileName(it.key)
           Photo(photo.id, photo.fileName, photo.url, photo.url)
         }
   }

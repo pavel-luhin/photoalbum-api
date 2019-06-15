@@ -37,12 +37,15 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
+    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
     compile "org.springframework.boot:spring-boot-starter-web"
     compile "org.springframework.boot:spring-boot-starter-webflux"
-    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-consul-all', version: '2.1.1.RELEASE'
-    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.47'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.1.5.RELEASE'
-    compile group: "com.amazonaws", name: 'aws-java-sdk', version: '1.11.563'
+    liquibaseRuntime('org.liquibase:liquibase-core:3.6.2')
+    compile "org.springframework.cloud:spring-cloud-starter-consul-all:2.1.1.RELEASE"
+    compile "mysql:mysql-connector-java:5.1.47"
+    compile "org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion"
+    compile "com.amazonaws:aws-java-sdk:1.11.563"
+    compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.+"
 }
 
 compileKotlin {
