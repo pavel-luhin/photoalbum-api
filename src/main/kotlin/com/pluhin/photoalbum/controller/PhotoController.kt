@@ -1,5 +1,6 @@
 package com.pluhin.photoalbum.controller
 
+import com.pluhin.photoalbum.model.CreateAlbumRequest
 import com.pluhin.photoalbum.service.PhotoService
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.multipart.MultipartFile
@@ -26,5 +27,11 @@ class PhotoController(private val photoService: PhotoService) {
   ): Flux<ServerResponse> {
     return photoService.getAlbumPhotos(albumId, skip)
         .flatMap { ServerResponse.ok().body(BodyInserters.fromObject(it)) }
+  }
+
+  @PostMapping("/album")
+  fun createAlbum(@RequestBody request: CreateAlbumRequest): Mono<ServerResponse> {
+    return photoService.createAlbum(request.name)
+        .flatMap { ServerResponse.noContent().build() }
   }
 }
