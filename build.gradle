@@ -14,7 +14,7 @@ sourceSets {
 }
 
 springBoot {
-    mainClassName = 'com.pluhin.photoalbum.PhotoAlbumApp'
+    mainClassName = 'com.pluhin.photoalbum.PhotoAlbumAppKt'
 }
 
 sourceCompatibility = 1.8
